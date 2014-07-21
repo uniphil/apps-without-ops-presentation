@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apps Without Ops</title>
+
+    <meta name="description" content="Creating static sites (sucks)">
+    <meta name="author" content="uniphil">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Apps Without Ops</h1>
+          <h3><small>or...</small></h3>
+          <h2>A look back at Open Schools Kenya</h2>
+          <h4><small>or...</small></h4>
+          <h3>Static websites suck.</h3>
+        </section>
+
+        <section>
+          <ul>
+            <li>Git</li>
+            <li class="fragment">GitHub</li>
+            <li class="fragment">GitHub Pages</li>
+            <li class="fragment">Raw GitHub</li>
+            <li class="fragment">Ops</li>
+            <li class="fragment">Static web app</li>
+          </ul>
+        </section>
+
+        <section>
+          <p><a href="https://uniphil.github.io/static-app-demo">demo...</a></p>
+          <p><a href="https://github.com/uniphil/static-app-demo"><small>...</small></a></p>
+        </section>
+
+        <section>
+          <section>
+            <h1>... for JS-only content <strong>only</strong>.</h1>
+          </section>
+          <section>
+            <ul>
+              <li>Search engine doom</li>
+              <li class="fragment">Publicly available content should be crawlable <small class="fragment">[according to me]</small></li>
+              <li class="fragment">Static HTML is fast and robust.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Jekyll?</h2>
+            <ul>
+              <li>Static HTML generation built into GitHub Pages
+                <pre><code>
+$ git push
+                </code></pre>
+              </li>
+              <li class="fragment">You are building a blog, right?</li>
+          </section>
+        </section>
+
+        <section>
+          <h1>Ops that don't go away :(</h1>
+        </section>
+
+        <section>
+          <section>
+            <h2>Development environment</h2>
+            <ul>
+              <li class="fragment">We have to generate a site from source...</li>
+              <li class="fragment">... we need tools</li>
+              <li class="fragment">... we need a dev environment</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Open Schools Kenya dev env: <strong>Python</strong></h3>
+            <pre><code>
+[phil ~] $ sudo apt-get install python-virtualenv
+            </code></pre>
+
+            <pre class="fragment">
+<span><code>[phil ~] $ git clone git@github.com:uniphil/project.git</code></span><span class="fragment"><code>[phil ~] $ cd project</code></span><span class="fragment"><code>[phil ~/project] $ ls
+app/        build.sh     requirements.txt</code></span><span class="fragment"><code>[phil ~/project] $ virtualenv venv</code></span><span class="fragment"><code>[phil ~/project] $ source venv/bin/activate</code></span><span class="fragment"><code>(venv) [phil ~/project] $ pip install -r requirements.txt</code></span></pre>
+
+            <pre class="fragment"><code>
+[phil ~/project] $ source venv/bin/activate
+(venv) [phil ~/project] $
+            </code></pre>
+
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Ops that don't go away #2</h2>
+            <h1>Staging</h1>
+          </section>
+          <section>
+            <h2>Use Raw GitHub?</h2>
+          </section>
+          <section>
+            <h2>Moar GitHub Pages????</h2>
+          </section>
+          <section>
+            <h2>Two Repos</h2>
+          </section>
+          <section>
+            <h2>Two Repos (the saga continues)</h2>
+          </section>
+          <section>
+            <h2>Extra thoughts: Avoiding two repos?</h2>
+            <ul>
+              <li class="fragment">Staging in a subfolder of production?</li>
+              <li class="fragment">Skip Staging?</li>
+              <li class="fragment">3rd-party service?</li>
+              <li class="fragment">Other ideas?</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Two Repos (it's about the journey)</h2>
+          </section>
+        </section>
+
+        <section>
+          <h1>Gotcha</h1>
+          <ul>
+            <li class="fragment">Absolute URLs cause pain</li>
+            <li class="fragment"><code>.nojekyll</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h1>My Wishlist</h1>
+          </section>
+          <section>
+            <h2>Dear GitHub,</h2>
+          </section>
+          <section>
+            <h2>Dear Raw GitHub,</h2>
+          </section>
+          <section>
+            <h2>Dear Static Site Generator Authors,</h2>
+          </section>
+        </section>
+
+        <section>
+          <h1>Wait, what about...</h1>
+          <h3>A <strong>browser-based</strong> static site generator</h3>
+          <h2>that talks to the GitHub API?</h2>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
