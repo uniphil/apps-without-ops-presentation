@@ -127,15 +127,54 @@ app/        build.sh     requirements.txt</code></span><span class="fragment"><c
           </section>
           <section>
             <h2>Use Raw GitHub?</h2>
+            <pre class="fragment"><code>
+<a href="gardens/garry/">Garry's Garden</a>
+            </code></pre>
+            <pre class="fragment"><code>
+[~/static-app-demo/] $ ls gardens/garry/</code><code class="fragment">index.html
+            </code></pre>
+            <h3 class="fragment">... nope.</h3>
+            <pre class="fragment"><code>
+<a href="gardens/garry.html">Garry's Garden</a>
+            </code></pre>
+            <p class="fragment">(maybe)</p>
           </section>
           <section>
             <h2>Moar GitHub Pages????</h2>
+            <div class="fragment">
+              <h3>Bonus</h3>
+              <ul>
+                <li>Identical deployment environments for staging and production</li>
+                <li>Only reliant on a single third-party service</li>
+              </ul>
+            </div>
           </section>
           <section>
-            <h2>Two Repos</h2>
+            <h2>GitHub Pages ⇒ Two Repos</h2>
+            <p>Completely fine because Git is a <em>distributed</em> VCS</p>
+            <pre><code class="fragment">[~]$ git clone git@github.com:devgateway/map-kibera-schools.git kibera</code><code class="fragment">[~]$ cd kibera</code><code class="fragment">[~/kibera]$ git remote mv origin staging</code><code class="fragment">[~/kibera]$ git remote add production git@github.com:mapkibera/map-kibera-schools.git</code><code class="fragment">[~/kibera]$ git remote</code><code class="fragment">production
+staging</code></pre>
           </section>
           <section>
             <h2>Two Repos (the saga continues)</h2>
+            <pre><code>
+[~/kibera]$ git fetch --all -v
+Fetching production
+From github.com:mapkibera/map-kibera-schools
+ = [up to date]      gh-pages   -> production/gh-pages
+ = [up to date]      master     -> production/master
+Fetching staging
+From github.com:devgateway/map-kibera-schools
+ = [up to date]      gh-pages   -> staging/gh-pages
+ = [up to date]      master     -> staging/master
+            </code></pre>
+          </section>
+          <section>
+            <h2>Deploys with two repos</h2>
+            <pre><code>
+(venv) [phil ~/kibera] $ ./build.sh</code><code class="fragment">(venv) [phil ~/kibera] $ ls
+app/        build/       build.sh     requirements.txt</code><code class="fragment">(venv) [phil ~/kibera] $ git checkout -b gh-pages-staging staging/gh-pages</code><code class="fragment">(venv) [phil ~/kibera] $ git clone . sandbox && cd sandbox</code><code class="fragment">(venv) [phil ~/kibera/sandbox] $ rm -r *</code><code class="fragment">(venv) [phil ~/kibera/sandbox] $ cp -r ../build .</code><code class="fragment">(venv) [phil ~/kibera/sandbox] $ git add --all .</code><code class="fragment">(venv) [phil ~/kibera/sandbox] $ git commit -m "new build for staging"</code><code class="fragment">(venv) [phil ~/kibera/sandbox] $ cd ..</code><code class="fragment">(venv) [phil ~/kibera] $ git remote add sandbox sandbox</code><code class="fragment">(venv) [phil ~/kibera] $ git pull sandbox gh-pages-staging</code><code class="fragment">(venv) [phil ~/kibera] $ git push staging gh-pages-staging:gh-pages
+            </code></pre>
           </section>
           <section>
             <h2>Extra thoughts: Avoiding two repos?</h2>
@@ -148,6 +187,11 @@ app/        build.sh     requirements.txt</code></span><span class="fragment"><c
           </section>
           <section>
             <h2>Two Repos (it's about the journey)</h2>
+            <h3>Challenges</h3>
+            <ul>
+              <li class="fragment"><strong><code>CNAME</code></strong></li>
+              <li class="fragment">and other similar files, but mostly <code>CNAME</code></li>
+            </ul>
           </section>
         </section>
 
@@ -165,12 +209,25 @@ app/        build.sh     requirements.txt</code></span><span class="fragment"><c
           </section>
           <section>
             <h2>Dear GitHub,</h2>
+            <h3><em>Please</em> let us</h3>
+            <ul>
+              <li class="fragment">configure <code>CNAME</code> through the repository config</li>
+              <li class="fragment">host GitHub pages per-branch?</li>
+            </ul>
           </section>
           <section>
             <h2>Dear Raw GitHub,</h2>
+            <h3><em>Please</em></h3>
+            <ul>
+              <li class="fragment">resolve requests to folder paths to <code>index.html</code></li>
+            </ul>
           </section>
           <section>
             <h2>Dear Static Site Generator Authors,</h2>
+            <h3><em>Please</em></h3>
+            <ul>
+              <li class="fragment">Pick a broader scope than blogs</li>
+            </ul>
           </section>
         </section>
 
@@ -178,6 +235,10 @@ app/        build.sh     requirements.txt</code></span><span class="fragment"><c
           <h1>Wait, what about...</h1>
           <h3>A <strong>browser-based</strong> static site generator</h3>
           <h2>that talks to the GitHub API?</h2>
+        </section>
+
+        <section>
+          <p><em>fin</em></p>
         </section>
 
       </div>
